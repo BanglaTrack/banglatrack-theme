@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.db
+
+# WordPress / Server temp files
+*.log
+*.zip
+*.tar.gz
+
+# IDEs/Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
