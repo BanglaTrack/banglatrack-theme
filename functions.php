@@ -19,6 +19,7 @@ require_once BTD_DIR . '/inc/class-assets.php';
 require_once BTD_DIR . '/inc/class-performance.php';
 require_once BTD_DIR . '/inc/class-structured-data.php';
 require_once BTD_DIR . '/inc/class-woocommerce.php';
+require_once BTD_DIR . '/inc/class-customizer.php';
 
 // Initialize.
 BTD\Theme_Setup::init();
@@ -26,3 +27,4 @@ BTD\Assets::init();
 BTD\Performance::init();
 BTD\Structured_Data::init();
 BTD\WooCommerce_Integration::init();
+BTD\Customizer::init();

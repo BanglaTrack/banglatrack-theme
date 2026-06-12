@@ -23,6 +23,7 @@ class Assets {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'dequeue_unnecessary' ), 100 );
 		add_action( 'wp_head', array( __CLASS__, 'preconnect_hints' ), 1 );
+		add_action( 'customize_preview_init', array( __CLASS__, 'enqueue_customizer_preview' ) );
 	}
 
 	/**
@@ -88,5 +89,20 @@ class Assets {
 	public static function preconnect_hints() {
 		echo '<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>' . "\n";
 		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	}
+
+	/**
+	 * Enqueue live-preview script for the Customizer.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_customizer_preview() {
+		wp_enqueue_script(
+			'btd-customizer-preview',
+			BTD_URI . '/assets/js/customizer-preview.js',
+			array( 'customize-preview' ),
+			BTD_VERSION,
+			true
+		);
 	}
 }
