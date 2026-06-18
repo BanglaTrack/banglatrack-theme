@@ -21,6 +21,7 @@ class Theme_Setup {
 	public static function init() {
 		add_action( 'after_setup_theme', array( __CLASS__, 'setup' ) );
 		add_action( 'widgets_init', array( __CLASS__, 'register_sidebars' ) );
+		add_action( 'init', array( __CLASS__, 'create_user_guide_page' ) );
 	}
 
 	/**
@@ -84,5 +85,29 @@ class Theme_Setup {
 			'before_title'  => '<h4 class="btd-footer-widget__title">',
 			'after_title'   => '</h4>',
 		) );
+	}
+
+	/**
+	 * Programmatically create the User Guide page if it doesn't exist.
+	 *
+	 * @return void
+	 */
+	public static function create_user_guide_page() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		$page_slug  = 'user-guide';
+		$page_check = get_page_by_path( $page_slug );
+
+		if ( ! isset( $page_check->ID ) ) {
+			wp_insert_post( array(
+				'post_title'   => 'User Guide',
+				'post_content' => '<!-- user guide page template -->',
+				'post_status'  => 'publish',
+				'post_type'    => 'page',
+				'post_name'    => $page_slug,
+			) );
+		}
 	}
 }

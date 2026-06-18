@@ -15,11 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="btd-footer__grid">
 			<div class="btd-footer__col btd-footer__about">
 				<div class="btd-footer__brand">
-					<svg class="btd-footer__logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-						<rect width="32" height="32" rx="8" fill="url(#btd-flogo-grad)"/>
-						<path d="M8 16L13 21L24 10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-						<defs><linearGradient id="btd-flogo-grad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#14956b"/><stop offset="1" stop-color="#0f7e57"/></linearGradient></defs>
-					</svg>
+					<img class="btd-footer__logo-img" src="<?php echo esc_url( BTD_URI . '/assets/logo/banglaTrack.svg' ); ?>" alt="<?php bloginfo( 'name' ); ?>" style="height: 28px; width: auto; vertical-align: middle; margin-right: 8px;">
 					<span class="btd-footer__brand-name"><?php bloginfo( 'name' ); ?></span>
 				</div>
 				<p class="btd-footer__tagline"><?php esc_html_e( 'The #1 WooCommerce shipping plugin for Bangladesh. Seamless courier integration for your online store.', 'banglatrack-theme' ); ?></p>
@@ -31,6 +27,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<li><a href="<?php echo esc_url( home_url( '/#features' ) ); ?>"><?php esc_html_e( 'Features', 'banglatrack-theme' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/#pricing' ) ); ?>"><?php esc_html_e( 'Pricing', 'banglatrack-theme' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/#faq' ) ); ?>"><?php esc_html_e( 'FAQ', 'banglatrack-theme' ); ?></a></li>
+					<?php
+					$ug_page = get_page_by_path( 'user-guide' );
+					$ug_url  = $ug_page ? get_permalink( $ug_page->ID ) : home_url( '/user-guide/' );
+					?>
+					<li><a href="<?php echo esc_url( $ug_url ); ?>"><?php esc_html_e( 'User Guide', 'banglatrack-theme' ); ?></a></li>
 				</ul>
 			</div>
 

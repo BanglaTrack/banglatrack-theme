@@ -28,11 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php the_custom_logo(); ?>
 			<?php else : ?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btd-header__logo-text" rel="home">
-					<svg class="btd-header__logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-						<rect width="32" height="32" rx="8" fill="url(#btd-logo-grad)"/>
-						<path d="M8 16L13 21L24 10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-						<defs><linearGradient id="btd-logo-grad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#14956b"/><stop offset="1" stop-color="#0f7e57"/></linearGradient></defs>
-					</svg>
+					<img class="btd-header__logo-img" src="<?php echo esc_url( BTD_URI . '/assets/logo/banglaTrack.svg' ); ?>" alt="<?php bloginfo( 'name' ); ?>" style="height: 36px; width: auto; vertical-align: middle; margin-right: 8px;">
 					<span><?php bloginfo( 'name' ); ?></span>
 				</a>
 			<?php endif; ?>
@@ -51,10 +47,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'menu_class'     => 'btd-nav-list',
 				'depth'          => 2,
 				'fallback_cb'    => function() {
+					$ug_page = get_page_by_path( 'user-guide' );
+					$ug_url  = $ug_page ? get_permalink( $ug_page->ID ) : home_url( '/user-guide/' );
 					echo '<ul class="btd-nav-list">';
 					echo '<li><a href="' . esc_url( home_url( '/#features' ) ) . '">' . esc_html__( 'Features', 'banglatrack-theme' ) . '</a></li>';
 					echo '<li><a href="' . esc_url( home_url( '/#pricing' ) ) . '">' . esc_html__( 'Pricing', 'banglatrack-theme' ) . '</a></li>';
 					echo '<li><a href="' . esc_url( home_url( '/#faq' ) ) . '">' . esc_html__( 'FAQ', 'banglatrack-theme' ) . '</a></li>';
+					echo '<li><a href="' . esc_url( $ug_url ) . '">' . esc_html__( 'User Guide', 'banglatrack-theme' ) . '</a></li>';
 					if ( class_exists( 'WooCommerce' ) ) {
 						echo '<li><a href="' . esc_url( wc_get_account_endpoint_url( 'dashboard' ) ) . '">' . esc_html__( 'My Account', 'banglatrack-theme' ) . '</a></li>';
 					}
