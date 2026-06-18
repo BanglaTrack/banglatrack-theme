@@ -45,7 +45,7 @@ class Assets {
 			'btd-main',
 			BTD_URI . '/assets/css/main.css',
 			array( 'btd-google-fonts' ),
-			BTD_VERSION
+			file_exists( BTD_DIR . '/assets/css/main.css' ) ? filemtime( BTD_DIR . '/assets/css/main.css' ) : BTD_VERSION
 		);
 	}
 
@@ -59,7 +59,7 @@ class Assets {
 			'btd-main',
 			BTD_URI . '/assets/js/main.js',
 			array(),
-			BTD_VERSION,
+			file_exists( BTD_DIR . '/assets/js/main.js' ) ? filemtime( BTD_DIR . '/assets/js/main.js' ) : BTD_VERSION,
 			array( 'strategy' => 'defer', 'in_footer' => true )
 		);
 	}
