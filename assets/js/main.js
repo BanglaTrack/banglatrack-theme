@@ -48,10 +48,14 @@
 		const toggle = document.getElementById('btd-nav-toggle');
 		const nav = document.querySelector('.btd-header__nav');
 		const label = document.querySelector('.btd-nav-toggle-label');
-		if (e.target === toggle) {
+		
+		if (!toggle || !toggle.checked) {
 			return;
 		}
-		if (toggle && toggle.checked && nav && !nav.contains(e.target) && !label.contains(e.target)) {
+		if (e.target === toggle || (label && label.contains(e.target))) {
+			return;
+		}
+		if (nav && !nav.contains(e.target)) {
 			toggle.checked = false;
 		}
 	});
