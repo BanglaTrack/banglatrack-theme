@@ -96,7 +96,7 @@ $shop_url = class_exists( 'WooCommerce' ) ? wc_get_page_permalink( 'shop' ) : ho
 							</li>
 						<?php endforeach; ?>
 					</ul>
-					<a href="<?php echo esc_url( $shop_url ); ?>" class="btd-btn btd-btn--lg <?php echo $plan['highlight'] ? 'btd-btn--primary' : 'btd-btn--outline'; ?> btd-btn--block">
+					<a href="<?php echo esc_url( $shop_url ); ?>" class="btd-btn <?php echo $plan['highlight'] ? 'btd-btn--primary' : 'btd-btn--outline'; ?> btd-btn--block btd-btn--lg" role="button">
 						<?php echo esc_html( $plan['cta_text'] ); ?>
 					</a>
 				</article>
